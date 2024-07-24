@@ -4,15 +4,30 @@ Customers often want to access the resources from the same country where user re
 
 Important: this application uses various AWS services and there are costs associated with these services after the Free Tier usage - please see the AWS Pricing page for details. You are responsible for any AWS costs incurred. No warranty is implied in this example.
 
+# Requirements
+
+* Create an AWS account if you do not already have one and log in. The IAM user that you use must have sufficient permissions to make necessary AWS service calls and manage AWS resources.
+* AWS CLI installed and configured
+* Git Installed
+* AWS Serverless Application Model (AWS SAM) installed
+
+
 # Deployment Instructions
 
-1. Change directory to:
+1. Create a new directory, navigate to that directory in a terminal and clone the GitHub repository:
+
+   ```
+   git clone https://github.com/aws-samples/serverless-patterns
+   ```
+
+
+2. Change directory to:
 
     ```
     cd apigw-geo-location-failover
     ```
 
-2. From the command line, use AWS SAM to deploy the AWS resources for the stack as specified in the template.yml file on the primary region:
+3. From the command line, use AWS SAM to deploy the AWS resources for the stack as specified in the template.yml file on the primary region:
 
     ```
     sam deploy -—guided —config-env primary
@@ -35,7 +50,7 @@ Important: this application uses various AWS services and there are costs associ
     Once you have run `sam deploy --guided --config-env primary` mode once and saved arguments to a configuration file (samconfig.toml), you can use `sam deploy --config-env primary` in future to use these defaults.
 
 
-3. From the command line, use AWS SAM to deploy the AWS resources for the stack as specified in the template.yml file on the secondary region:
+4. From the command line, use AWS SAM to deploy the AWS resources for the stack as specified in the template.yml file on the secondary region:
 
     ```
     sam deploy —guided —config-env secondary
